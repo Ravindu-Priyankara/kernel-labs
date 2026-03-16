@@ -23,15 +23,15 @@ sudo insmod hello_kernel.ko
 
 - Check Kernel Log
 
-<img src="./screenshot/load_the_module.png" width="600">
+<img src="../screenshot/load_the_module.png" width="600">
 
 ## Check the loaded module status
 
-<img src="./screenshot/module_status.png" width="600">
+<img src="../screenshot/module_status.png" width="600">
 
 ## Unload the module
 
-<img src="./screenshot/unload_the_module.png" width="600">
+<img src="../screenshot/unload_the_module.png" width="600">
 
 ## Clear the diagnostic messages
 ```bash
