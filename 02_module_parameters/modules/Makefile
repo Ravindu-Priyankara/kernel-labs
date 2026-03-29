@@ -1,5 +1,5 @@
 #files
-obj-m += mod_param_int.o 
+obj-m += mod_param_int.o mod_param_str.o
 
 #directories
 KDIR := /lib/modules/$(shell uname -r)/build
