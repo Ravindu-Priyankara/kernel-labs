@@ -1,18 +1,23 @@
-#files
+# files
 obj-m += rodata_modify.o
 
-#directories
+# directories
 KDIR := /lib/modules/$(shell uname -r)/build
-PWD := $(shell pwd)
+PWD  := $(shell pwd)
+
 UNSAFE ?= 0
 
-#bui;d the modules
+# flags
+ccflags-y += -Wall -Wextra
+
+ifeq ($(UNSAFE),1)
+ccflags-y += -DUNSAFE=1
+endif
+
+# build
 all:
-	$(MAKE) -C $(KDIR) M=$(PWD) EXTRA_CFLAGS="-DUNSAFE=$(UNSAFE)" modules
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
 
-#clean
+# clean
 clean:
-	$(MAKE) -C $(KDIR) M=$(PWD) UNSAFE clean
-
-#for trigger crash
-# make unsafe=1
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
