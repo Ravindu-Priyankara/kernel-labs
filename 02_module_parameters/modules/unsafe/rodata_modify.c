@@ -38,7 +38,9 @@ static char *name = "Ravindu";
 static __init int panic_init(void){
     kgdb_breakpoint();
     pr_info("module loading...\n");
-    name[0] = 'K';  // crash{ try to modify .rodata stored string}
+    #ifdef UNSAFE 
+        name[0] = 'K';  // crash{ try to modify .rodata stored string}
+    #endif
     pr_info("changed...!\n");
 
     return 0;
