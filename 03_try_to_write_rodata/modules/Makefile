@@ -1,5 +1,5 @@
 # files
-obj-m += rodata_modify.o
+obj-m += rodata_modify.o rodata_to_data.o
 
 # directories
 KDIR := /lib/modules/$(shell uname -r)/build

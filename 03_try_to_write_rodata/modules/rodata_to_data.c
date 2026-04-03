@@ -2,16 +2,10 @@
 
 /*
 * ================================================================
-*  Module: mod_param_str.c
+*  Module: rodata_to_data.c
 *
 *  Description:
-* A simple Linux Kernel Module that crashes your kernel. | Do not run ....!
-*
-*  Important Notes:
-*  - This program crashes your kernel because it tries to modify the .rodata section stored variable.
-*
-*  Purpose:
-*  Learning what happens if u try to change a pointer that was stored via rodata.
+*  A simple Linux Kernel Module that store string .data section.
 *
 *  Author: Ravindu Priyankara
 *  Project: Kernel Lab
@@ -24,24 +18,21 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
-#include <linux/kgdb.h>
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Ravindu Priyankara");
-MODULE_DESCRIPTION("Simple Linux Kernel Module that panic your kernel.");
-MODULE_PARM_DESC(name, "String value");
+MODULE_DESCRIPTION("Simple Linux Kernel Module that store string .data section.");
 MODULE_VERSION("1.0");
 
 // stored .rodata
-static char *name = "Ravindu";
+static char name[] = "Ravindu";
 
 static __init int panic_init(void){
-    kgdb_breakpoint();
     pr_info("module loading...\n");
-    #if UNSAFE 
-        name[0] = 'K';  // crash{ try to modify .rodata stored string}
-    #endif
+    pr_info("Before change name is: %s\n", name);
+    name[0] = 'K';
     pr_info("changed...!\n");
+    pr_info("After change name is: %s\n", name);
 
     return 0;
 }
