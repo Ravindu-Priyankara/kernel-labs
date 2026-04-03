@@ -38,7 +38,7 @@ static __init int panic_init(void){
 }
 
 static __exit void panic_exit(void){
-    pr_info("bye");
+    pr_info("bye\n");
 }
 
 module_init(panic_init);

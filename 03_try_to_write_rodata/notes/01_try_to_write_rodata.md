@@ -58,3 +58,6 @@ name[0] = 'K';
 
 <img src="./images/string_veryfication.png">
 
+### Program output
+
+<img src="./images/output.png">
